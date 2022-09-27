@@ -5,9 +5,14 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
+<%
+    System.out.println("sout Test");
+	out.print("outTest");
+%>
+
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+HI123
 </body>
 </html>

@@ -1,0 +1,12 @@
+IDE : IntelliJ 2022.2
+WAS : tomcat 9.0
+JDK 1.8
+
+
+
+jsp가 .java 파일로 변환되는 경로
+C:\Users\김세종\AppData\Local\JetBrains\IntelliJIdea2022.2\tomcat\9c1e0212-246a-4f86-aeb4-934d772dc81a\work\Catalina\localhost\ROOT\org\apache\jsp
+
+공공데이터 인증키
+525555786b6b736a32384871585853
+https://data.seoul.go.kr/dataList/OA-20883/S/1/datasetView.do
