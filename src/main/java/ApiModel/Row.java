@@ -1,6 +1,6 @@
 package ApiModel;
 
-public class row {
+public class Row {
 	private String X_SWIFI_MGR_NO;
 	private String X_SWIFI_WRDOFC;
 	private String X_SWIFI_MAIN_NM;

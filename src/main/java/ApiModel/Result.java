@@ -1,6 +1,6 @@
 package ApiModel;
 
-public class RESULT {
+public class Result {
 
 	private String CODE;
 	private String MESSAGE;

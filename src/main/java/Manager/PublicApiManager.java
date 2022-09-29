@@ -8,10 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-import ApiModel.WifiList;
+import ApiModel.WifiPojo;
 
 public class PublicApiManager {
 	private final String apiUrl = "http://openapi.seoul.go.kr:8088";
@@ -35,7 +33,7 @@ public class PublicApiManager {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/xml");
-		System.out.println("Response code: " + conn.getResponseCode()); /* 연결 자체에 대한 확인이 필요하므로 추가합니다.*/
+		//System.out.println("Response code: " + conn.getResponseCode()); /* 연결 자체에 대한 확인이 필요하므로 추가합니다.*/
 		BufferedReader rd;
 
 		// 서비스코드가 정상이면 200~300사이의 숫자가 나옵니다.
@@ -51,22 +49,31 @@ public class PublicApiManager {
 		}
 		rd.close();
 		conn.disconnect();
-		System.out.println(sb);
 		return sb.toString();
 	}
 
-	private WifiList Deserialization(String jsonStr)
+	private WifiPojo deserialization(String jsonStr)
 	{
 		Gson gson = new Gson();
-		WifiList list = gson.fromJson(jsonStr, WifiList.class);
+		WifiPojo list = gson.fromJson(jsonStr, WifiPojo.class);
 		return list;
-
 	}
 
-	public static void main(String[] args) throws IOException {
-		PublicApiManager pm = new PublicApiManager();
-		String jsonSTr = pm.request(1,5);
-		WifiList result = pm.Deserialization(jsonSTr);
-		System.out.println(result.getTbPublicWifiInfo().getList_total_count());
+	//총 데이터 개수 반환
+	public int getTotalSize() throws IOException {
+		String jsonSTr = request(1,1);
+		WifiPojo result = deserialization(jsonSTr);
+		return result.getTbPublicWifiInfo().getList_total_count();
 	}
+
+	//결과 반환
+	public WifiPojo getWifiList(int startIdx, int endIdx) throws IOException {
+		String jsonStr = request(startIdx, endIdx);
+		return deserialization(jsonStr);
+	}
+
+	// public static void main(String[] args) throws Exception {
+	// 	PublicApiManager m = new PublicApiManager();
+	// 	System.out.println(m.getTotalSize());
+	// }
 }

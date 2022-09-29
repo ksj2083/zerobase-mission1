@@ -1,6 +1,6 @@
 package ApiModel;
 
-public class WifiList {
+public class WifiPojo {
 
 	private TbPublicWifiInfo TbPublicWifiInfo;
 
