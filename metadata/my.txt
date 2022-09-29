@@ -1,7 +1,23 @@
-IDE : IntelliJ 2022.2
-WAS : tomcat 9.0
-JDK 1.8
+진행상황 공유 (1/3)
 
+[개발도구 정리]
+1. 개발 편의를 위한 도구
+IDE : IntelliJ 2022.2 
+DB툴 : DBeaver 22.2.0
+협업툴 : GitHub
+
+2. 개발에 사용될 기술
+WAS : tomcat 9.0
+Language : JAVA
+JDK 1.8
+DB : SQLite 3.39.3
+
+3. 사용예정 라이브러리
+gson
+Sqlite-jdbc
+
+[수행한 것]
+1. ERD 작성 및 테이블 생성
 
 
 jsp가 .java 파일로 변환되는 경로
