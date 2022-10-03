@@ -17,23 +17,25 @@ public class Manager {
 		sm = new SQLiteManager();
 	}
 
+	//모두 삭제 후, api에서 와이파이 정보 받아서 저장하고 저장개수 반환
 	public int saveApiData() throws IOException, SQLException, ClassNotFoundException {
+		sm.deleteWifiInfos(); //기존 데이터 삭제 후 진행
 		int total = pm.getTotalSize();
-
 		//한번에 천개씩 받아와서 저장
 		int startIdx = 1;
 		while(startIdx<total)
 		{
-			int endIdx = startIdx+999 > total ? total : startIdx+999;
+			int endIdx = Math.min(startIdx+999, total);
 			WifiPojo pojo = pm.getWifiList(startIdx,endIdx);
-			List<WifiDTO> dtoList = convertDTOList(pojo);
+			List<WifiDTO> dtoList = convertToDTOList(pojo);
 			sm.insertWifiInfos(dtoList);
 			startIdx = endIdx+1;
 		}
 		return total;
 	}
 
-	private List<WifiDTO> convertDTOList(WifiPojo pojo)
+
+	private List<WifiDTO> convertToDTOList(WifiPojo pojo)
 	{
 		List<WifiDTO> result = new ArrayList<>();
 		List<Row> rowList = pojo.getTbPublicWifiInfo().getRow();
@@ -71,8 +73,8 @@ public class Manager {
 		return result;
 	}
 
-	public static void main(String[] args) throws Exception {
-		Manager m = new Manager();
-		System.out.println(m.saveApiData());
-	}
+	// public static void main(String[] args) throws Exception {
+	// 	Manager m = new Manager();
+	// 	System.out.println(m.saveApiData());
+	// }
 }
