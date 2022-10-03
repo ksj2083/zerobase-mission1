@@ -47,15 +47,16 @@ public class SQLiteManager {
 		closeConnect(conn);
 		return tmp;
 	}
-	public void insertTest() throws SQLException, ClassNotFoundException {
-		String sql = "INSERT INTO WIFI (MGR_NO) VALUES (?)";
+	// public void insertTest() throws SQLException, ClassNotFoundException {
+	// 	String sql = "INSERT INTO WIFI (MGR_NO) VALUES (?)";
+	//
+	// 	Connection conn = getConnect();
+	// 	PreparedStatement ps = conn.prepareStatement(sql);
+	// 	ps.setString(1, "test");
+	// 	ps.execute();
+	// 	closeConnect(conn);
+	// }
 
-		Connection conn = getConnect();
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, "test");
-		ps.execute();
-		closeConnect(conn);
-	}
 	//WIFI DTO LIST insert
 	public void insertWifiInfos(List<WifiDTO> list) throws SQLException, ClassNotFoundException {
 		Connection conn = getConnect();
@@ -102,16 +103,16 @@ public class SQLiteManager {
 			ps.setString(15, dto.getLNT());
 			ps.setString(16, dto.getWORK_DTTM());
 
-
 			ps.execute();
 		}
 
 		closeConnect(conn);
 	}
 
-	// public static void main(String[] args) throws Exception {
-	// 	SQLiteManager h = new SQLiteManager();
-	// 	h.insertTest();
-	// 	System.out.println(h.selectTest());
-	// }
+	public void deleteWifiInfos() throws SQLException, ClassNotFoundException {
+		String sql = "DELETE FROM WIFI";
+		Connection conn = getConnect();
+		Statement stat = conn.createStatement();
+		stat.execute(sql);
+	}
 }
