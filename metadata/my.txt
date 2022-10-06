@@ -12,17 +12,9 @@ Language : JAVA
 JDK 1.8
 DB : SQLite 3.39.3
 
-3. 사용예정 라이브러리
+3. 라이브러리
 gson
 Sqlite-jdbc
-
-[수행한 것]
-1. ERD 작성 및 테이블 생성
+CSS 출처 : https://www.w3schools.com/css/css_table.asp
 
 
-jsp가 .java 파일로 변환되는 경로
-C:\Users\김세종\AppData\Local\JetBrains\IntelliJIdea2022.2\tomcat\9c1e0212-246a-4f86-aeb4-934d772dc81a\work\Catalina\localhost\ROOT\org\apache\jsp
-
-공공데이터 인증키
-525555786b6b736a32384871585853
-https://data.seoul.go.kr/dataList/OA-20883/S/1/datasetView.do

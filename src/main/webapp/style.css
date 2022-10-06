@@ -1,0 +1,35 @@
+#box {
+    border: 1px solid black;
+    height: auto;
+    min-height: 50px;
+    overflow: auto;
+    padding : 8px;
+}
+
+#sendForm {
+    padding-top: 8px;
+}
+
+#apiData {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#apiData td, #apiData th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#apiData tr:nth-child(even){background-color: #f2f2f2;}
+
+#apiData tr:hover {background-color: #ddd;}
+
+#apiData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+

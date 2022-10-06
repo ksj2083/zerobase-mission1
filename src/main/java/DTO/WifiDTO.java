@@ -14,8 +14,8 @@ public class WifiDTO {
 	private int CNSTC_YEAR; //설치년도
 	private String INOUT_DOOR; //실내외구분
 	private String REMARS3; //wifi 접속환경
-	private String LAT; //x좌표
-	private String LNT; //y좌표
+	private String LAT; //위도
+	private String LNT; //경도
 	private String WORK_DTTM; //작업일자
 
 	public String getMGR_NO() {

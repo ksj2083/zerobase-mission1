@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
-import ApiModel.WifiPojo;
+import ApiDataModel.WifiPojo;
 
 public class PublicApiManager {
 	private final String apiUrl = "http://openapi.seoul.go.kr:8088";
@@ -60,15 +60,25 @@ public class PublicApiManager {
 	}
 
 	//총 데이터 개수 반환
-	public int getTotalSize() throws IOException {
-		String jsonSTr = request(1,1);
+	public int getTotalSize(){
+		String jsonSTr = null;
+		try {
+			jsonSTr = request(1,1);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 		WifiPojo result = deserialization(jsonSTr);
 		return result.getTbPublicWifiInfo().getList_total_count();
 	}
 
 	//결과 반환
-	public WifiPojo getWifiList(int startIdx, int endIdx) throws IOException {
-		String jsonStr = request(startIdx, endIdx);
+	public WifiPojo getWifiList(int startIdx, int endIdx) {
+		String jsonStr = null;
+		try {
+			jsonStr = request(startIdx, endIdx);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 		return deserialization(jsonStr);
 	}
 
