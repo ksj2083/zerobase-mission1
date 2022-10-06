@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import DTO.HistoryDTO;
 import DTO.WifiDTO;
 
 public class SQLiteManager {
@@ -163,6 +164,73 @@ public class SQLiteManager {
 		disconnect();
 	}
 
+
+	private String getNow()
+	{
+		String sql = "SELECT datetime('now','localtime')";
+		String now;
+		connect();
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			now = rs.getString(1);
+		} catch (Exception e) {
+			disconnect();
+			throw new RuntimeException(e);
+		}
+		disconnect();
+		return now;
+	}
+
+	//History select
+	public List<HistoryDTO> getHistory()
+	{
+		String sql = "SELECT * FROM HISTORY";
+		List<HistoryDTO> result = new ArrayList<>();
+		connect();
+		try
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				HistoryDTO dto = new HistoryDTO();
+				dto.setHIS_NO(rs.getInt(1));
+				dto.setLAT(rs.getString(2));
+				dto.setLNT(rs.getString(3));
+				dto.setLKUP_DTTM(rs.getString(4));
+				result.add(dto);
+			}
+		} catch (Exception e) {
+			disconnect();
+			throw new RuntimeException(e);
+		}
+		disconnect();
+		return result;
+	}
+
+	//History insert
+	public void insertHistory(HistoryDTO dto)
+	{
+		String sql = "INSERT INTO HISTORY (LAT, LNT, LKUP_DTTM) VALUES(?,?,?)";
+		connect();
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,dto.getLAT());
+			ps.setString(2,dto.getLNT());
+			ps.setString(3,getNow());
+			System.out.println(ps);
+			ps.execute();
+		}
+		catch (Exception e)
+		{
+			disconnect();
+			throw new RuntimeException(e);
+		}
+		disconnect();
+
+	}
+
 	public void deleteWifiInfos() {
 		String sql = "DELETE FROM WIFI";
 		connect();
@@ -176,4 +244,5 @@ public class SQLiteManager {
 		}
 		disconnect();
 	}
+
 }

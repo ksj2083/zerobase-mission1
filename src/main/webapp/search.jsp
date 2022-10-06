@@ -20,9 +20,11 @@
         count = "20";
     }
     Manager manager = new Manager();
+    //기록남기기
+    manager.saveHistory(lat, lnt);
+	//출력
     List<WifiDTO> list = manager.getNearWifiInfos(lat,lnt,Integer.parseInt(count));
     Gson gson = new Gson();
 	String jsonText = gson.toJson(list);
-    //System.out.println(jsonText);
 	out.print(jsonText);
 %>

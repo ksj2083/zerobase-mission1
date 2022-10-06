@@ -81,9 +81,4 @@ public class PublicApiManager {
 		}
 		return deserialization(jsonStr);
 	}
-
-	// public static void main(String[] args) throws Exception {
-	// 	PublicApiManager m = new PublicApiManager();
-	// 	System.out.println(m.getTotalSize());
-	// }
 }

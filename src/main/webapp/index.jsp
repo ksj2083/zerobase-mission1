@@ -87,11 +87,13 @@
 
         });
     </script>
+    <h1>가까운 와이파이 찾기</h1>
 </head>
 <body>
 
 <div id = "box">
     <input id="buttonGetWifi" type="button" value="와이파이 정보 가져오기">
+    <a href="history.jsp" target = "_blank">히스토리 페이지로 이동</a>
     <form id="sendForm">
         위도 <input type="text" name = "lat" value="37.5666805">
         경도 <input type="text" name = "lnt" value ="126.9784147">
